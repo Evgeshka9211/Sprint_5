@@ -26,8 +26,8 @@ class TestStellarBurgersProfileForm:
         WebDriverWait(driver, 3).until(EC.presence_of_element_located(LKProfile.lk_info_message))
         driver.find_element(*MainPage.mn_constructor_button).click()
 
-        h1_tag = driver.find_elements(By.XPATH, ".//h1")
-        assert len(h1_tag) > 0 and h1_tag[0].text == 'Соберите бургер'
+        h1_tag = driver.find_element(*LKProfile.lk_h1)
+        assert h1_tag.text == 'Соберите бургер'
 
     def test_click_logo_button_show_constructor_form(self, login):
         """ Переход из личного кабинета в конструктор при нажатии на лого """
@@ -38,8 +38,9 @@ class TestStellarBurgersProfileForm:
         WebDriverWait(driver, 3).until(EC.presence_of_element_located(LKProfile.lk_info_message))
         driver.find_element(*MainPage.mn_logo).click()
 
-        h1_tag = driver.find_elements(By.XPATH, ".//h1")
-        assert len(h1_tag) > 0 and h1_tag[0].text == 'Соберите бургер'
+        h1_tag = driver.find_element(*LKProfile.lk_h1)
+
+        assert h1_tag.text == 'Соберите бургер'
 
     def test_click_logout_button_in_lk_open_login_form(self, login):
         """ Выйти из аккаунта """
